@@ -14,11 +14,13 @@
 
         <ion-menu content-id="main-content" menu-id="main-menu">
             <ion-content>
-                <ion-list>
-                    <ion-item router-link="/home">Home</ion-item>
-                    <ion-item router-link="/news">News</ion-item>
-                    <ion-item router-link="/contact">Contact</ion-item>
-                </ion-list>
+                <ion-menu-toggle>
+                    <ion-list>
+                        <ion-item router-link="/home">Home</ion-item>
+                        <ion-item router-link="/news">News</ion-item>
+                        <ion-item router-link="/contact">Contact</ion-item>
+                    </ion-list>
+                </ion-menu-toggle>
             </ion-content>
         </ion-menu>
 
@@ -41,6 +43,7 @@ import {
     IonItem,
     IonButtons,
     IonMenuButton,
+    IonMenuToggle,
 } from "@ionic/vue";
 
 export default {
@@ -56,6 +59,7 @@ export default {
         IonItem,
         IonButtons,
         IonMenuButton,
+        IonMenuToggle,
     },
 };
 </script>
