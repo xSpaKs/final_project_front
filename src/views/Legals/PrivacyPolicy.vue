@@ -1,6 +1,8 @@
 <template>
     <ion-page>
-        <ion-content> </ion-content>
+        <ion-content>
+            <h1>On est sur les Privacy Policy</h1>
+        </ion-content>
     </ion-page>
 </template>
 

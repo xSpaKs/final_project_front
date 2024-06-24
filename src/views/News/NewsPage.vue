@@ -1,6 +1,8 @@
 <template>
     <ion-page>
-        <ion-content> </ion-content>
+        <ion-content>
+            <h1>On est sur les actus</h1>
+        </ion-content>
     </ion-page>
 </template>
 
