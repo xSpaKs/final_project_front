@@ -12,7 +12,6 @@
                         v-model.trim="formData.name"
                         required
                     ></ion-input>
-                    <span slot="error">Name is required</span>
                 </ion-item>
 
                 <ion-item>

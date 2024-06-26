@@ -2,15 +2,6 @@ import { createRouter, createWebHistory } from "@ionic/vue-router";
 
 import HomePage from "../views/HomePage.vue";
 
-import SubcriptionsPage from "../views/SubscriptionsPage.vue";
-import NewsPage from "../views/News/NewsPage.vue";
-import NewsDetailsPage from "../views/News/NewsDetailsPage.vue";
-import ContactPage from "../views/ContactPage.vue";
-
-import PrivacyPolicy from "../views/Legals/LegalMentions.vue";
-import CGV from "../views/Legals/CGV.vue";
-import LegalMentions from "../views/Legals/LegalMentions.vue";
-
 const routes = [
     {
         path: "/",
@@ -22,39 +13,54 @@ const routes = [
         component: HomePage,
     },
     {
+        path: "/login",
+        name: "Login",
+        component: () => import("../views/Auth/LoginPage.vue"),
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: () => import("../views/Auth/RegisterPage.vue"),
+    },
+    {
         path: "/subscriptions",
         name: "Subcriptions",
-        component: SubcriptionsPage,
+        component: () => import("../views/SubscriptionsPage.vue"),
     },
     {
         path: "/news",
         name: "News",
-        component: NewsPage,
+        component: () => import("../views/News/NewsPage.vue"),
     },
     {
         path: "/news/:id",
         name: "NewsDetails",
-        component: NewsDetailsPage,
+        component: () => import("../views/News/NewsDetailsPage.vue"),
     },
     {
         path: "/contact",
         name: "Contact",
-        component: ContactPage,
+        component: () => import("../views/ContactPage.vue"),
     },
     {
         path: "/privacy-policy",
         name: "PrivacyPolicy",
-        component: PrivacyPolicy,
+        component: () => import("../views/Legals/PrivacyPolicy.vue"),
     },
     {
         path: "/cgv",
         name: "CGV",
-        component: CGV,
+        component: () => import("../views/Legals/CGV.vue"),
     },
     {
         path: "/legal-mentions",
         name: "LegalMentions",
-        component: LegalMentions,
+        component: () => import("../views/Legals/LegalMentions.vue"),
+    },
+    {
+        path: "/checkout",
+        name: "Checkout",
+        component: () => import("../views/Stripe/CheckoutPage.vue"),
     },
 ];
 

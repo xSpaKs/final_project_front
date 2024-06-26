@@ -17,6 +17,8 @@
                 <ion-menu-toggle>
                     <ion-list>
                         <ion-item router-link="/home">Home</ion-item>
+                        <ion-item router-link="/login">Login</ion-item>
+                        <ion-item router-link="/register">Register</ion-item>
                         <ion-item router-link="/news">News</ion-item>
                         <ion-item router-link="/contact">Contact</ion-item>
                     </ion-list>

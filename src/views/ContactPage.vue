@@ -2,8 +2,8 @@
     <ion-page>
         <ion-content>
             <Coordinates />
-            <Map :lat="48.87052665909432" :lng="2.363183774266225" :zoom="19" />
             <FormContact />
+            <Map :lat="48.87052665909432" :lng="2.363183774266225" :zoom="19" />
         </ion-content>
     </ion-page>
 </template>
