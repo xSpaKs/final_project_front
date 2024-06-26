@@ -36,7 +36,7 @@
                     ></ion-textarea>
                 </ion-item>
             </ion-list>
-            <ion-button expand="full" @click="submitForm()">Submit</ion-button>
+            <ion-button expand="full" @click="submit">Submit</ion-button>
         </ion-card-content>
     </ion-card>
 </template>
@@ -56,6 +56,8 @@ import {
     IonButton,
 } from "@ionic/vue";
 
+import axios from "axios";
+
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 
@@ -74,7 +76,7 @@ export default {
     },
 
     methods: {
-        submitForm() {
+        async submit() {
             this.v$.formData.$touch();
 
             if (this.v$.formData.$invalid) {
@@ -82,10 +84,20 @@ export default {
                 return;
             }
 
-            /*fetch(import.meta.env.API_LINK, {
-                method: "POST",
-                body: JSON.stringify(this.formData),
-            });*/
+            let response;
+            try {
+                response = await axios.post(
+                    "http://127.0.0.1:8001/api/mail-contact",
+                    {
+                        name: this.formData.name,
+                        email: this.formData.email,
+                        object: this.formData.object,
+                        message: this.formData.message,
+                    }
+                );
+            } catch (error) {
+                console.log(error);
+            }
         },
     },
 
@@ -97,6 +109,7 @@ export default {
             message: { required, minLength: minLength(50) },
         },
     },
+
     components: {
         IonCard,
         IonCardHeader,

@@ -6,15 +6,15 @@
                 <ion-card-content>
                     <ion-item>
                         <ion-label>Name : </ion-label>
-                        <ion-input v-model="name"></ion-input>
+                        <ion-input v-model.trim="formData.name"></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Email : </ion-label>
-                        <ion-input v-model="email"></ion-input>
+                        <ion-input v-model.trim="formData.email"></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>Password : </ion-label>
-                        <ion-input v-model="password"></ion-input>
+                        <ion-input v-model.trim="formData.password"></ion-input>
                     </ion-item>
                     <ion-button @click="register">Create my account</ion-button>
                 </ion-card-content>
@@ -35,26 +35,41 @@ import {
     IonInput,
     IonButton,
 } from "@ionic/vue";
+
 import axios from "axios";
 
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength } from "@vuelidate/validators";
+
 export default {
+    setup: () => ({ v$: useVuelidate() }),
+
     data() {
         return {
-            name: "Aran Hiblot",
-            email: "aran@gmail.com",
-            password: "aaaaaaaa",
+            formData: {
+                name: "Aran Hiblot",
+                email: "aran@gmail.com",
+                password: "aaaaaaaa",
+            },
         };
     },
     methods: {
         async register() {
+            this.v$.formData.$touch();
+
+            if (this.v$.formData.$invalid) {
+                console.log("Form is invalid");
+                return;
+            }
+
             let response;
             try {
                 response = await axios.post(
                     "http://127.0.0.1:8001/api/register",
                     {
-                        name: this.name,
-                        email: this.email,
-                        password: this.password,
+                        name: this.formData.name,
+                        email: this.formData.email,
+                        password: this.formData.password,
                     }
                 );
             } catch (error) {
@@ -62,6 +77,15 @@ export default {
             }
         },
     },
+
+    validations: {
+        formData: {
+            name: { required },
+            email: { required, email },
+            password: { required },
+        },
+    },
+
     components: {
         IonPage,
         IonContent,
