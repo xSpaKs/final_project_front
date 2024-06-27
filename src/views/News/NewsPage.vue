@@ -9,7 +9,9 @@
                     <ion-card-title>{{ single_news.title }}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                    <ion-text>{{ single_news.content }}</ion-text>
+                    <ion-text class="truncate-text">{{
+                        single_news.content
+                    }}</ion-text>
                     <small>{{ single_news.created_at }}</small>
                 </ion-card-content>
             </ion-card>
@@ -21,6 +23,7 @@
 import {
     IonPage,
     IonContent,
+    IonTitle,
     IonCard,
     IonCardHeader,
     IonCardTitle,
@@ -54,6 +57,7 @@ export default {
     components: {
         IonPage,
         IonContent,
+        IonTitle,
         IonCard,
         IonCardHeader,
         IonCardTitle,
@@ -62,3 +66,14 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.truncate-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em; /* Adjust this value based on your line height */
+}
+</style>

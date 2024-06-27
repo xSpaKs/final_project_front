@@ -22,6 +22,7 @@
                         >
                         <ion-item router-link="/login">Login</ion-item>
                         <ion-item router-link="/register">Register</ion-item>
+                        <ion-item @click="logout">Logout</ion-item>
                         <ion-item router-link="/news">News</ion-item>
                         <ion-item router-link="/contact">Contact</ion-item>
                     </ion-list>
@@ -51,7 +52,29 @@ import {
     IonMenuToggle,
 } from "@ionic/vue";
 
+import axios from "axios";
+import { useAuthStore } from "@/stores/auth.js";
+
 export default {
+    methods: {
+        logout() {
+            try {
+                const authStore = useAuthStore();
+                console.log(authStore.token);
+                const response = axios.post(
+                    "http://127.0.0.1:8001/api/logout",
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authStore.token}`,
+                        },
+                    }
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        },
+    },
     components: {
         IonApp,
         IonRouterOutlet,

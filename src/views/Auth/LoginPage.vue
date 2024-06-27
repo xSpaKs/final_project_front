@@ -40,6 +40,7 @@ import {
 } from "@ionic/vue";
 
 import axios from "axios";
+import { useAuthStore } from "@/stores/auth.js";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
@@ -64,12 +65,18 @@ export default {
                 return;
             }
 
-            let response;
             try {
-                response = await axios.post("http://127.0.0.1:8001/api/login", {
-                    email: this.formData.email,
-                    password: this.formData.password,
-                });
+                const response = await axios.post(
+                    "http://127.0.0.1:8001/api/login",
+                    {
+                        email: this.formData.email,
+                        password: this.formData.password,
+                    }
+                );
+
+                const authStore = useAuthStore();
+                authStore.setToken(response.data.token);
+                console.log(authStore.token);
             } catch (error) {
                 console.log(error);
             }
