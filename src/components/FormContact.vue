@@ -7,16 +7,16 @@
         <ion-card-content>
             <ion-list>
                 <ion-item>
-                    <ion-label>Name</ion-label>
                     <ion-input
+                        label="Name : "
                         v-model.trim="formData.name"
                         required
                     ></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-label>Email</ion-label>
                     <ion-input
+                        label="Email : "
                         v-model.trim="formData.email"
                         type="email"
                         required
@@ -24,13 +24,15 @@
                 </ion-item>
 
                 <ion-item>
-                    <ion-label>Object</ion-label>
-                    <ion-input v-model.trim="formData.object"></ion-input>
+                    <ion-input
+                        label="Object : "
+                        v-model.trim="formData.object"
+                    ></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-label>Message</ion-label>
                     <ion-textarea
+                        label="Message : "
                         v-model.trim="formData.message"
                         required
                     ></ion-textarea>

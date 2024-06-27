@@ -24,6 +24,7 @@
     "@vuelidate/validators": "^2.0.4",
     "axios": "^1.7.2",
     "ionicons": "^7.0.0",
+    "pinia": "^2.1.7",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"
   },

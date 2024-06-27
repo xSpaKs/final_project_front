@@ -1,15 +1,64 @@
 <template>
     <ion-page>
         <ion-content>
-            <h1>On est sur les actus</h1>
+            <ion-card
+                v-for="single_news in news"
+                @click="details(single_news.id)"
+            >
+                <ion-card-header>
+                    <ion-card-title>{{ single_news.title }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-text>{{ single_news.content }}</ion-text>
+                    <small>{{ single_news.created_at }}</small>
+                </ion-card-content>
+            </ion-card>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue";
+import {
+    IonPage,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonText,
+} from "@ionic/vue";
+import axios from "axios";
 
 export default {
-    components: { IonPage, IonContent },
+    data() {
+        return {
+            news: [],
+        };
+    },
+    async mounted() {
+        let response;
+        try {
+            response = await axios.get("http://127.0.0.1:8001/api/news", {});
+            this.news = response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    methods: {
+        details(id) {
+            this.$router.push("/news/" + id);
+        },
+    },
+
+    components: {
+        IonPage,
+        IonContent,
+        IonCard,
+        IonCardHeader,
+        IonCardTitle,
+        IonCardContent,
+        IonText,
+    },
 };
 </script>

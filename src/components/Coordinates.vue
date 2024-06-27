@@ -4,9 +4,6 @@
             <ion-text
                 >Adresse de la boutique : 19 rue Yves Toudic, 75011
             </ion-text>
-            <ion-text
-                >Adresse de la boutique : 19 rue Yves Toudic, 75011
-            </ion-text>
         </ion-card-content>
     </ion-card>
 </template>

@@ -2,21 +2,31 @@
     <ion-page>
         <ion-content>
             <ion-card>
-                <ion-card-title>Register</ion-card-title>
+                <ion-card-header>
+                    <ion-card-title>Register</ion-card-title>
+                </ion-card-header>
                 <ion-card-content>
                     <ion-item>
-                        <ion-label>Name : </ion-label>
-                        <ion-input v-model.trim="formData.name"></ion-input>
+                        <ion-input
+                            label="Name : "
+                            v-model.trim="formData.name"
+                        ></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label>Email : </ion-label>
-                        <ion-input v-model.trim="formData.email"></ion-input>
+                        <ion-input
+                            label="Email : "
+                            v-model.trim="formData.email"
+                        ></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label>Password : </ion-label>
-                        <ion-input v-model.trim="formData.password"></ion-input>
+                        <ion-input
+                            label="Password : "
+                            v-model.trim="formData.password"
+                        ></ion-input>
                     </ion-item>
-                    <ion-button @click="register">Create my account</ion-button>
+                    <ion-button slot="primary" @click="register"
+                        >Create my account</ion-button
+                    >
                 </ion-card-content>
             </ion-card>
         </ion-content>
@@ -28,6 +38,7 @@ import {
     IonPage,
     IonContent,
     IonCard,
+    IonCardHeader,
     IonCardTitle,
     IonCardContent,
     IonItem,
@@ -90,6 +101,7 @@ export default {
         IonPage,
         IonContent,
         IonCard,
+        IonCardHeader,
         IonCardTitle,
         IonCardContent,
         IonItem,
