@@ -3,7 +3,7 @@
         <ion-content>
             <ion-card>
                 <ion-card-header>
-                    <ion-card-title>Login</ion-card-title>
+                    <ion-card-subtitle>Login</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
                     <ion-item>
@@ -14,11 +14,17 @@
                     </ion-item>
                     <ion-item>
                         <ion-input
+                            type="password"
                             label="Password : "
                             v-model.trim="formData.password"
+                            ><ion-input-password-toggle
+                                slot="end"
+                            ></ion-input-password-toggle
                         ></ion-input>
                     </ion-item>
-                    <ion-button slot="primary" @click="login">Login</ion-button>
+                    <ion-button expand="full" slot="primary" @click="login"
+                        >Login</ion-button
+                    >
                 </ion-card-content>
             </ion-card>
         </ion-content>
@@ -31,16 +37,16 @@ import {
     IonContent,
     IonCard,
     IonCardHeader,
-    IonCardTitle,
+    IonCardSubtitle,
     IonCardContent,
     IonItem,
     IonLabel,
     IonInput,
+    IonInputPasswordToggle,
     IonButton,
 } from "@ionic/vue";
 
 import axios from "axios";
-import { useAuthStore } from "@/stores/auth.js";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
@@ -56,8 +62,10 @@ export default {
             },
         };
     },
+
     methods: {
         async login() {
+            // Vuelidate check form entries
             this.v$.formData.$touch();
 
             if (this.v$.formData.$invalid) {
@@ -66,6 +74,7 @@ export default {
             }
 
             try {
+                // Ask the API to login
                 const response = await axios.post(
                     "http://127.0.0.1:8001/api/login",
                     {
@@ -74,9 +83,11 @@ export default {
                     }
                 );
 
-                const authStore = useAuthStore();
-                authStore.setToken(response.data.token);
-                console.log(authStore.token);
+                // Store the user with localStorage
+                localStorage.setItem("user", JSON.stringify(response.data));
+
+                // Redirect to user page when logged in
+                this.$router.push("/user");
             } catch (error) {
                 console.log(error);
             }
@@ -95,11 +106,12 @@ export default {
         IonContent,
         IonCard,
         IonCardHeader,
-        IonCardTitle,
+        IonCardSubtitle,
         IonCardContent,
         IonItem,
         IonLabel,
         IonInput,
+        IonInputPasswordToggle,
         IonButton,
     },
 };

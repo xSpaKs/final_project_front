@@ -1,21 +1,17 @@
 <template>
     <ion-card>
         <ion-card-header>
-            <ion-card-subtitle>Contact us</ion-card-subtitle>
+            <ion-card-subtitle>Modify user infos</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-            <ion-text class="ion-text-center" color="success" v-if="mailSent"
-                >Votre mail a bien été envoyé</ion-text
-            >
             <ion-list>
                 <ion-item>
                     <ion-input
                         label="Name : "
                         label-placement="floating"
                         v-model.trim="formData.name"
-                        required
-                    ></ion-input>
+                    />
                 </ion-item>
 
                 <ion-item>
@@ -24,25 +20,19 @@
                         label-placement="floating"
                         v-model.trim="formData.email"
                         type="email"
-                        required
                     />
                 </ion-item>
 
                 <ion-item>
                     <ion-input
-                        label="Object : "
+                        type="password"
+                        label="Password : "
                         label-placement="floating"
-                        v-model.trim="formData.object"
+                        v-model.trim="formData.password"
+                        ><ion-input-password-toggle
+                            slot="end"
+                        ></ion-input-password-toggle
                     ></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-textarea
-                        label="Message : "
-                        label-placement="floating"
-                        v-model.trim="formData.message"
-                        required
-                    ></ion-textarea>
                 </ion-item>
             </ion-list>
             <ion-button expand="full" @click="submit">Submit</ion-button>
@@ -61,15 +51,15 @@ import {
     IonItem,
     IonLabel,
     IonInput,
+    IonInputPasswordToggle,
     IonTextarea,
     IonButton,
-    IonText,
 } from "@ionic/vue";
 
 import axios from "axios";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { email, minLength } from "@vuelidate/validators";
 
 export default {
     setup: () => ({ v$: useVuelidate() }),
@@ -77,25 +67,14 @@ export default {
     data() {
         return {
             formData: {
-                name: "Aran",
-                email: "aran@gmail.com",
-                object: "Salut",
-                message:
-                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                name: "",
+                email: "",
+                password: "",
             },
-
-            mailSent: false,
         };
     },
 
     methods: {
-        clearForm() {
-            this.formData.name = "";
-            this.formData.email = "";
-            this.formData.object = "";
-            this.formData.message = "";
-        },
-
         async submit() {
             this.v$.formData.$touch();
 
@@ -104,20 +83,28 @@ export default {
                 return;
             }
 
-            let response;
             try {
-                response = await axios.post(
-                    "http://127.0.0.1:8001/api/mail-contact",
+                const response = await axios.post(
+                    "http://127.0.0.1:8001/api/modify-user",
                     {
+                        id: JSON.parse(localStorage.getItem("user")).id,
                         name: this.formData.name,
                         email: this.formData.email,
-                        object: this.formData.object,
-                        message: this.formData.message,
+                        password: this.formData.password,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${
+                                JSON.parse(localStorage.getItem("user")).token
+                            }`,
+                        },
                     }
                 );
 
-                this.mailSent = true;
-                this.clearForm();
+                // Store the updated user with localStorage
+                localStorage.setItem("user", JSON.stringify(response.data));
+
+                console.log(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -126,10 +113,9 @@ export default {
 
     validations: {
         formData: {
-            name: { required },
-            email: { required, email },
-            object: { required },
-            message: { required, minLength: minLength(50) },
+            name: {},
+            email: { email },
+            password: { minLength: minLength(8) },
         },
     },
 
@@ -143,9 +129,20 @@ export default {
         IonItem,
         IonLabel,
         IonInput,
+        IonInputPasswordToggle,
         IonTextarea,
         IonButton,
-        IonText,
     },
 };
 </script>
+
+<style scoped>
+ion-item {
+    display: flex;
+    flex-direction: column;
+}
+
+small {
+    color: red;
+}
+</style>

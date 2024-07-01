@@ -1,31 +1,51 @@
 <template>
     <ion-page>
-        <ion-content> </ion-content>
+        <ion-content>
+            <UserInfos :user="user" />
+            <ModifyUserInfos />
+        </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue";
-import axios from "axios";
+import {
+    IonPage,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonText,
+} from "@ionic/vue";
+
+import UserInfos from "../components/UserInfos.vue";
+import ModifyUserInfos from "../components/ModifyUserInfos.vue";
 
 export default {
-    async beforeRouteEnter() {
-        try {
-            response = await axios.get(
-                import.meta.env.API_URL + "user",
-                {},
-                {
-                    headers: {
-                        Authorization: "Bearer 2|", // token sanctum
-                    },
-                }
-            );
-        } catch (error) {
-            console.log(error);
-            return;
-        }
+    data() {
+        return {
+            user: {},
+        };
     },
 
-    components: { IonPage, IonContent },
+    mounted() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user);
+        if (!user) {
+            this.$router.push("login");
+        }
+
+        this.user = user;
+    },
+
+    components: {
+        IonPage,
+        IonContent,
+        IonCard,
+        IonCardHeader,
+        IonCardTitle,
+        IonText,
+        UserInfos,
+        ModifyUserInfos,
+    },
 };
 </script>

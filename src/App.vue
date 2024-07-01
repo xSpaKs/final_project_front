@@ -16,15 +16,62 @@
             <ion-content>
                 <ion-menu-toggle>
                     <ion-list>
-                        <ion-item router-link="/home">Home</ion-item>
-                        <ion-item router-link="/subscriptions"
-                            >Subscriptions</ion-item
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            router-link="/home"
                         >
-                        <ion-item router-link="/login">Login</ion-item>
-                        <ion-item router-link="/register">Register</ion-item>
-                        <ion-item @click="logout">Logout</ion-item>
-                        <ion-item router-link="/news">News</ion-item>
-                        <ion-item router-link="/contact">Contact</ion-item>
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-text>Home</ion-text>
+                        </ion-item>
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            router-link="/subscriptions"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>Subscriptions</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            v-if="!isUserAuthenticated"
+                            router-link="/login"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>Login</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            v-if="!isUserAuthenticated"
+                            router-link="/register"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>Register</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            v-if="isUserAuthenticated"
+                            router-link="/user"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>User</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            router-link="/news"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>News</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            router-link="/contact"
+                            ><ion-ripple-effect></ion-ripple-effect
+                            ><ion-text>Contact</ion-text></ion-item
+                        >
+                        <ion-item
+                            class="ion-activatable ripple-parent rectangle"
+                            v-if="isUserAuthenticated"
+                            ><ion-ripple-effect></ion-ripple-effect>
+                            <ion-icon
+                                name="log-out-outline"
+                                style="color: red"
+                            ></ion-icon>
+                            <ion-item @click="logout">Logout</ion-item>
+                        </ion-item>
                     </ion-list>
                 </ion-menu-toggle>
             </ion-content>
@@ -50,31 +97,44 @@ import {
     IonButtons,
     IonMenuButton,
     IonMenuToggle,
+    IonIcon,
+    IonRippleEffect,
+    IonText,
 } from "@ionic/vue";
 
 import axios from "axios";
-import { useAuthStore } from "@/stores/auth.js";
 
 export default {
+    data() {
+        return {
+            isUserAuthenticated:
+                JSON.parse(localStorage.getItem("user")) != null,
+        };
+    },
+
     methods: {
         logout() {
             try {
-                const authStore = useAuthStore();
-                console.log(authStore.token);
                 const response = axios.post(
                     "http://127.0.0.1:8001/api/logout",
                     {},
                     {
                         headers: {
-                            Authorization: `Bearer ${authStore.token}`,
+                            Authorization: `Bearer ${
+                                localStorage.getItem("user").token
+                            }`,
                         },
                     }
                 );
+
+                localStorage.removeItem("user");
+                this.$router.push("/");
             } catch (error) {
                 console.log(error);
             }
         },
     },
+
     components: {
         IonApp,
         IonRouterOutlet,
@@ -88,6 +148,9 @@ export default {
         IonButtons,
         IonMenuButton,
         IonMenuToggle,
+        IonIcon,
+        IonRippleEffect,
+        IonText,
     },
 };
 </script>

@@ -3,7 +3,7 @@
         <ion-content>
             <ion-card>
                 <ion-card-header>
-                    <ion-card-title>Register</ion-card-title>
+                    <ion-card-subtitle>Register</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
                     <ion-item>
@@ -20,11 +20,13 @@
                     </ion-item>
                     <ion-item>
                         <ion-input
+                            type="password"
                             label="Password : "
                             v-model.trim="formData.password"
-                        ></ion-input>
+                            ><ion-input-password-toggle slot="end"
+                        /></ion-input>
                     </ion-item>
-                    <ion-button slot="primary" @click="register"
+                    <ion-button expand="full" slot="primary" @click="register"
                         >Create my account</ion-button
                     >
                 </ion-card-content>
@@ -39,11 +41,12 @@ import {
     IonContent,
     IonCard,
     IonCardHeader,
-    IonCardTitle,
+    IonCardSubtitle,
     IonCardContent,
     IonItem,
     IonLabel,
     IonInput,
+    IonInputPasswordToggle,
     IonButton,
 } from "@ionic/vue";
 
@@ -66,6 +69,7 @@ export default {
     },
     methods: {
         async register() {
+            // Vuelidate check form entries
             this.v$.formData.$touch();
 
             if (this.v$.formData.$invalid) {
@@ -73,9 +77,9 @@ export default {
                 return;
             }
 
-            let response;
             try {
-                response = await axios.post(
+                // Ask the API to register
+                const response = await axios.post(
                     "http://127.0.0.1:8001/api/register",
                     {
                         name: this.formData.name,
@@ -83,6 +87,12 @@ export default {
                         password: this.formData.password,
                     }
                 );
+
+                // Store the user with localStorage
+                localStorage.setItem("user", JSON.stringify(response.data));
+
+                // Redirect to user page when registered
+                this.$router.push("user");
             } catch (error) {
                 console.log(error);
             }
@@ -102,11 +112,12 @@ export default {
         IonContent,
         IonCard,
         IonCardHeader,
-        IonCardTitle,
+        IonCardSubtitle,
         IonCardContent,
         IonItem,
         IonLabel,
         IonInput,
+        IonInputPasswordToggle,
         IonButton,
     },
 };

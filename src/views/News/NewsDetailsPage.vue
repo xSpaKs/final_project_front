@@ -1,6 +1,8 @@
 <template>
     <ion-page>
         <ion-content>
+            <ion-back-button defaultHref="/home">Hey</ion-back-button>
+
             <ion-card>
                 <ion-card-header>
                     <ion-card-title>{{ news.title }}</ion-card-title>
@@ -23,6 +25,9 @@ import {
     IonCardTitle,
     IonCardContent,
     IonText,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
 } from "@ionic/vue";
 import axios from "axios";
 
@@ -33,9 +38,8 @@ export default {
         };
     },
     async mounted() {
-        let response;
         try {
-            response = await axios.get(
+            const response = await axios.get(
                 "http://127.0.0.1:8001/api/news/" + this.$route.params.id,
                 {}
             );
@@ -52,6 +56,16 @@ export default {
         IonCardTitle,
         IonCardContent,
         IonText,
+        IonToolbar,
+        IonButtons,
+        IonBackButton,
     },
 };
 </script>
+
+<style scoped>
+ion-back-button {
+    padding-top: 5px;
+    height: 25px;
+}
+</style>
