@@ -27,14 +27,16 @@ export default {
         };
     },
 
-    mounted() {
-        const user = JSON.parse(localStorage.getItem("user"));
-        console.log(user);
-        if (!user) {
-            this.$router.push("login");
+    beforeRouteEnter(to, from, next) {
+        if (!JSON.parse(localStorage.getItem("user"))) {
+            next("/login");
+        } else {
+            next();
         }
+    },
 
-        this.user = user;
+    mounted() {
+        this.user = JSON.parse(localStorage.getItem("user"));
     },
 
     components: {

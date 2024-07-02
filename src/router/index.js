@@ -67,6 +67,16 @@ const routes = [
         name: "Checkout",
         component: () => import("../views/Stripe/CheckoutPage.vue"),
     },
+    {
+        path: "/checkout/cancel",
+        name: "CheckoutCancel",
+        component: () => import("../views/Stripe/CheckoutCancelPage.vue"),
+    },
+    {
+        path: "/checkout/success",
+        name: "CheckoutSuccess",
+        component: () => import("../views/Stripe/CheckoutSuccessPage.vue"),
+    },
 ];
 
 const router = createRouter({

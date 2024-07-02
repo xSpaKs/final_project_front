@@ -13,6 +13,15 @@
                     <ion-list>
                         <ion-item lines="full">
                             <ion-thumbnail slot="start">
+                                <ion-icon name="time-outline"></ion-icon>
+                            </ion-thumbnail>
+                            <ion-skeleton-text
+                                :animated="true"
+                                style="width: 80px"
+                            ></ion-skeleton-text>
+                        </ion-item>
+                        <ion-item lines="full">
+                            <ion-thumbnail slot="start">
                                 <ion-icon name="planet-outline"></ion-icon>
                             </ion-thumbnail>
                             <ion-skeleton-text
@@ -29,21 +38,16 @@
                                 style="width: 150px"
                             ></ion-skeleton-text>
                         </ion-item>
+                        <ion-item lines="full">
+                            <ion-thumbnail slot="start">
+                                <ion-icon name="repeat-outline"></ion-icon>
+                            </ion-thumbnail>
+                            <ion-skeleton-text
+                                :animated="true"
+                                style="width: 80px"
+                            ></ion-skeleton-text>
+                        </ion-item>
                     </ion-list>
-                    <ion-item>
-                        <ion-input
-                            label="Discount : "
-                            label-placement="floating"
-                            v-model.trim="discount.name"
-                        ></ion-input>
-                        <ion-text color="success" v-if="discount.amount"
-                            >You have a {{ discount.amount }}%
-                            discount</ion-text
-                        >
-                        <ion-button fill="clear" @click="addDiscount"
-                            >Add the discount</ion-button
-                        >
-                    </ion-item>
                 </ion-card-content>
             </ion-card>
 
@@ -58,6 +62,14 @@
                     <ion-list>
                         <ion-item lines="full">
                             <ion-thumbnail slot="start">
+                                <ion-icon name="time-outline"></ion-icon>
+                            </ion-thumbnail>
+                            <ion-label
+                                >First payment : {{ currentDate() }}</ion-label
+                            >
+                        </ion-item>
+                        <ion-item lines="full">
+                            <ion-thumbnail slot="start">
                                 <ion-icon name="planet-outline"></ion-icon>
                             </ion-thumbnail>
                             <ion-label>{{ product.name }}</ion-label>
@@ -68,25 +80,19 @@
                             </ion-thumbnail>
                             <ion-label>{{
                                 type == "year"
-                                    ? product.price1.amount + " / year"
-                                    : product.price2.amount + " / month"
+                                    ? product.price1.amount + "€ / year"
+                                    : product.price2.amount + "€ / month"
                             }}</ion-label>
                         </ion-item>
+                        <ion-item lines="full">
+                            <ion-thumbnail slot="start">
+                                <ion-icon name="repeat-outline"></ion-icon>
+                            </ion-thumbnail>
+                            <ion-label
+                                >Next payment : {{ futureDate() }}</ion-label
+                            >
+                        </ion-item>
                     </ion-list>
-                    <ion-item>
-                        <ion-input
-                            label="Discount : "
-                            label-placement="floating"
-                            v-model.trim="discount.name"
-                        ></ion-input>
-                        <ion-text color="success" v-if="discount.amount"
-                            >You have a {{ discount.amount }}%
-                            discount</ion-text
-                        >
-                        <ion-button fill="clear" @click="addDiscount"
-                            >Add the discount</ion-button
-                        >
-                    </ion-item>
                 </ion-card-content>
                 <ion-button @click="submit" expand="full"
                     >Pay with Stripe</ion-button
@@ -129,10 +135,6 @@ export default {
                 price2: { amount: 0 },
             },
             type: "",
-            discount: {
-                name: "",
-                amount: "",
-            },
         };
     },
 
@@ -150,6 +152,35 @@ export default {
     },
 
     methods: {
+        currentDate() {
+            const date = new Date();
+            const day = date.getDate().toString().padStart(2, "0");
+            const month = (date.getMonth() + 1).toString().padStart(2, "0");
+            const year = date.getFullYear();
+
+            return `${day}/${month}/${year}`;
+        },
+
+        futureDate() {
+            const date = new Date();
+            const day = date.getDate().toString().padStart(2, "0");
+            let month = (date.getMonth() + 1).toString().padStart(2, "0");
+            let year = date.getFullYear();
+
+            if (this.type == "month") {
+                month++;
+                month = month.toString().padStart(2, "0");
+                if (month == 13) {
+                    month = "00";
+                    year++;
+                }
+            } else {
+                year++;
+            }
+
+            return `${day}/${month}/${year}`;
+        },
+
         loadType() {
             if (
                 this.$route.query.type != "month" &&
@@ -177,21 +208,6 @@ export default {
             this.loaded = true;
         },
 
-        async addDiscount() {
-            try {
-                const response = await axios.get(
-                    "http://127.0.0.1:8001/api/discounts/" + this.discount.name,
-                    {}
-                );
-
-                if (response.data) {
-                    this.discount.amount = response.data.amount;
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        },
-
         async submit() {
             try {
                 const response = await axios.post(
@@ -209,8 +225,6 @@ export default {
                         },
                     }
                 );
-
-                console.log(response.data);
 
                 const stripeCheckoutUrl = response.data.url;
                 window.location.replace(stripeCheckoutUrl);
