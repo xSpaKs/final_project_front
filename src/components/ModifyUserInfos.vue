@@ -1,7 +1,7 @@
 <template>
     <ion-card>
         <ion-card-header>
-            <ion-card-subtitle>Modify user infos</ion-card-subtitle>
+            <ion-card-subtitle>Modify my informations</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
@@ -57,6 +57,7 @@ import {
 } from "@ionic/vue";
 
 import axios from "axios";
+import { useAuthStore } from "../stores/auth";
 
 import { useVuelidate } from "@vuelidate/core";
 import { email, minLength } from "@vuelidate/validators";
@@ -66,6 +67,7 @@ export default {
 
     data() {
         return {
+            authStore: useAuthStore(),
             formData: {
                 name: "",
                 email: "",
@@ -87,24 +89,20 @@ export default {
                 const response = await axios.post(
                     "http://127.0.0.1:8001/api/modify-user",
                     {
-                        id: JSON.parse(localStorage.getItem("user")).id,
+                        id: this.authStore.user.id,
                         name: this.formData.name,
                         email: this.formData.email,
                         password: this.formData.password,
                     },
                     {
                         headers: {
-                            Authorization: `Bearer ${
-                                JSON.parse(localStorage.getItem("user")).token
-                            }`,
+                            Authorization: `Bearer ${this.authStore.user.token}`,
                         },
                     }
                 );
 
                 // Store the updated user with localStorage
-                localStorage.setItem("user", JSON.stringify(response.data));
-
-                console.log(response.data);
+                this.authStore.update(response.data);
             } catch (error) {
                 console.log(error);
             }

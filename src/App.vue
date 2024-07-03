@@ -31,21 +31,21 @@
                         >
                         <ion-item
                             class="ion-activatable ripple-parent rectangle"
-                            v-if="!isUserAuthenticated"
+                            v-if="!authStore.isAuthenticated"
                             router-link="/login"
                             ><ion-ripple-effect></ion-ripple-effect
                             ><ion-text>Login</ion-text></ion-item
                         >
                         <ion-item
                             class="ion-activatable ripple-parent rectangle"
-                            v-if="!isUserAuthenticated"
+                            v-if="!authStore.isAuthenticated"
                             router-link="/register"
                             ><ion-ripple-effect></ion-ripple-effect
                             ><ion-text>Register</ion-text></ion-item
                         >
                         <ion-item
                             class="ion-activatable ripple-parent rectangle"
-                            v-if="isUserAuthenticated"
+                            v-if="authStore.isAuthenticated"
                             router-link="/user"
                             ><ion-ripple-effect></ion-ripple-effect
                             ><ion-text>User</ion-text></ion-item
@@ -64,7 +64,7 @@
                         >
                         <ion-item
                             class="ion-activatable ripple-parent rectangle"
-                            v-if="isUserAuthenticated"
+                            v-if="authStore.isAuthenticated"
                             ><ion-ripple-effect></ion-ripple-effect>
                             <ion-icon
                                 name="log-out-outline"
@@ -103,13 +103,17 @@ import {
 } from "@ionic/vue";
 
 import axios from "axios";
+import { useAuthStore } from "./stores/auth";
 
 export default {
     data() {
         return {
-            isUserAuthenticated:
-                JSON.parse(localStorage.getItem("user")) != null,
+            authStore: useAuthStore(),
         };
+    },
+
+    mounted() {
+        this.authStore.loadUserFromLocalStorage();
     },
 
     methods: {
@@ -120,14 +124,12 @@ export default {
                     {},
                     {
                         headers: {
-                            Authorization: `Bearer ${
-                                localStorage.getItem("user").token
-                            }`,
+                            Authorization: `Bearer ${this.authStore.user.token}`,
                         },
                     }
                 );
 
-                localStorage.removeItem("user");
+                this.authStore.logout();
                 this.$router.push("/");
             } catch (error) {
                 console.log(error);

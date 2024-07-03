@@ -51,6 +51,7 @@ import {
 } from "@ionic/vue";
 
 import axios from "axios";
+import { useAuthStore } from "../../stores/auth";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
@@ -60,6 +61,7 @@ export default {
 
     data() {
         return {
+            authStore: useAuthStore(),
             formData: {
                 name: "Aran Hiblot",
                 email: "aran@gmail.com",
@@ -67,6 +69,15 @@ export default {
             },
         };
     },
+
+    beforeRouteEnter(to, from, next) {
+        if (JSON.parse(localStorage.getItem("user"))) {
+            next("/user");
+        } else {
+            next();
+        }
+    },
+
     methods: {
         async register() {
             // Vuelidate check form entries
@@ -88,8 +99,8 @@ export default {
                     }
                 );
 
-                // Store the user with localStorage
-                localStorage.setItem("user", JSON.stringify(response.data));
+                // Store the user with pinia
+                this.authStore.login(response.data);
 
                 // Redirect to user page when registered
                 this.$router.push("user");

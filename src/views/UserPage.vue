@@ -1,7 +1,8 @@
 <template>
     <ion-page>
         <ion-content>
-            <UserInfos :user="user" />
+            <UserInfos />
+            <UserSubscriptions />
             <ModifyUserInfos />
         </ion-content>
     </ion-page>
@@ -19,24 +20,15 @@ import {
 
 import UserInfos from "../components/UserInfos.vue";
 import ModifyUserInfos from "../components/ModifyUserInfos.vue";
+import UserSubscriptions from "../components/UserSubscriptions.vue";
 
 export default {
-    data() {
-        return {
-            user: {},
-        };
-    },
-
     beforeRouteEnter(to, from, next) {
         if (!JSON.parse(localStorage.getItem("user"))) {
             next("/login");
         } else {
             next();
         }
-    },
-
-    mounted() {
-        this.user = JSON.parse(localStorage.getItem("user"));
     },
 
     components: {
@@ -48,6 +40,7 @@ export default {
         IonText,
         UserInfos,
         ModifyUserInfos,
+        UserSubscriptions,
     },
 };
 </script>

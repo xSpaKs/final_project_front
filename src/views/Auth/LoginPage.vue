@@ -47,6 +47,7 @@ import {
 } from "@ionic/vue";
 
 import axios from "axios";
+import { useAuthStore } from "../../stores/auth";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
@@ -61,6 +62,14 @@ export default {
                 password: "aaaaaaaa",
             },
         };
+    },
+
+    beforeRouteEnter(to, from, next) {
+        if (JSON.parse(localStorage.getItem("user"))) {
+            next("/user");
+        } else {
+            next();
+        }
     },
 
     methods: {
@@ -84,7 +93,8 @@ export default {
                 );
 
                 // Store the user with localStorage
-                localStorage.setItem("user", JSON.stringify(response.data));
+                const authStore = useAuthStore();
+                authStore.login(response.data);
 
                 // Redirect to user page when logged in
                 this.$router.push("/user");
