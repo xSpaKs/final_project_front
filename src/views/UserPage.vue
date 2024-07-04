@@ -4,6 +4,7 @@
             <UserInfos />
             <UserSubscriptions />
             <ModifyUserInfos />
+            <DeleteAccount />
         </ion-content>
     </ion-page>
 </template>
@@ -21,6 +22,7 @@ import {
 import UserInfos from "../components/UserInfos.vue";
 import ModifyUserInfos from "../components/ModifyUserInfos.vue";
 import UserSubscriptions from "../components/UserSubscriptions.vue";
+import DeleteAccount from "../components/DeleteAccount.vue";
 
 export default {
     beforeRouteEnter(to, from, next) {
@@ -41,6 +43,7 @@ export default {
         UserInfos,
         ModifyUserInfos,
         UserSubscriptions,
+        DeleteAccount,
     },
 };
 </script>

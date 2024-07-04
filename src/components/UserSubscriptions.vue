@@ -54,7 +54,7 @@ export default {
     async mounted() {
         try {
             const response = await axios.post(
-                "http://127.0.0.1:8001/api/paymentsFromUser",
+                "http://127.0.0.1:8001/api/payments-from-user",
                 {},
                 {
                     headers: {
@@ -64,7 +64,6 @@ export default {
                     },
                 }
             );
-            console.log(response.data);
             this.payments = response.data;
         } catch (error) {
             console.log(error);

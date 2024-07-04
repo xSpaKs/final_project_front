@@ -94,7 +94,7 @@
                         </ion-item>
                     </ion-list>
                 </ion-card-content>
-                <ion-button @click="submit" expand="full"
+                <ion-button @click="submit" expand="block"
                     >Pay with Stripe</ion-button
                 >
             </ion-card>

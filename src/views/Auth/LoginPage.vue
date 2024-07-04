@@ -22,7 +22,7 @@
                             ></ion-input-password-toggle
                         ></ion-input>
                     </ion-item>
-                    <ion-button expand="full" slot="primary" @click="login"
+                    <ion-button expand="block" slot="primary" @click="login"
                         >Login</ion-button
                     >
                 </ion-card-content>

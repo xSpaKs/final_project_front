@@ -26,7 +26,7 @@
                             ><ion-input-password-toggle slot="end"
                         /></ion-input>
                     </ion-item>
-                    <ion-button expand="full" slot="primary" @click="register"
+                    <ion-button expand="block" slot="primary" @click="register"
                         >Create my account</ion-button
                     >
                 </ion-card-content>

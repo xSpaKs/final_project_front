@@ -45,7 +45,7 @@
                     ></ion-textarea>
                 </ion-item>
             </ion-list>
-            <ion-button expand="full" @click="submit">Submit</ion-button>
+            <ion-button expand="block" @click="submit">Submit</ion-button>
         </ion-card-content>
     </ion-card>
 </template>
