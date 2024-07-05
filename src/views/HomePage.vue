@@ -2,7 +2,10 @@
     <ion-page>
         <ion-content>
             <ion-card>
-                <img src="../../public/solar-system.jpg" alt="" />
+                <img
+                    src="../../public/assets/images/solar-system.jpg"
+                    alt="Image du système solaire"
+                />
                 <ion-card-header>
                     <ion-card-subtitle>
                         Welcome to Planetary

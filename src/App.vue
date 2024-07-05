@@ -24,6 +24,10 @@
                         class="ion-activatable ripple-parent rectangle"
                         router-link="/subscriptions"
                         ><ion-ripple-effect></ion-ripple-effect
+                        ><ion-icon
+                            style="color: white; padding-right: 15px"
+                            name="planet-outline"
+                        ></ion-icon
                         ><ion-text>Subscriptions</ion-text></ion-item
                     >
                     <ion-item
@@ -45,18 +49,30 @@
                         v-if="authStore.isAuthenticated"
                         router-link="/user"
                         ><ion-ripple-effect></ion-ripple-effect
+                        ><ion-icon
+                            style="color: white; padding-right: 15px"
+                            name="person-outline"
+                        ></ion-icon
                         ><ion-text>My profile</ion-text></ion-item
                     >
                     <ion-item
                         class="ion-activatable ripple-parent rectangle"
                         router-link="/news"
                         ><ion-ripple-effect></ion-ripple-effect
+                        ><ion-icon
+                            style="color: white; padding-right: 15px"
+                            name="newspaper-outline"
+                        ></ion-icon
                         ><ion-text>News</ion-text></ion-item
                     >
                     <ion-item
                         class="ion-activatable ripple-parent rectangle"
                         router-link="/contact"
                         ><ion-ripple-effect></ion-ripple-effect
+                        ><ion-icon
+                            style="color: white; padding-right: 15px"
+                            name="mail-open-outline"
+                        ></ion-icon
                         ><ion-text>Contact us</ion-text></ion-item
                     >
                     <ion-item
