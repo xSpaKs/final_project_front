@@ -1,67 +1,101 @@
 <template>
     <ion-page>
         <ion-content>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                tincidunt mi vitae maximus tincidunt. Ut porttitor elit ut mi
-                molestie, at tristique augue tincidunt. Ut convallis eu mi et
-                facilisis. Nulla bibendum, lacus et auctor consectetur, ipsum
-                sem rutrum est, ac scelerisque augue nibh sit amet turpis.
-                Aenean eget odio eu mauris tincidunt rhoncus ut non sapien.
-                Vivamus sed orci eget urna auctor luctus ac eu augue. Sed
-                rhoncus lacinia lacus in tincidunt. Ut gravida vel magna eu
-                maximus. Nunc sed odio orci. Integer accumsan id nunc id tempor.
-                Aliquam dapibus id diam sit amet aliquet. Duis pretium sem eget
-                est condimentum malesuada. Cras commodo orci vitae diam sodales,
-                nec laoreet sem vehicula. Aliquam metus lacus, bibendum at
-                convallis vel, vulputate nec mauris. Duis volutpat eget risus
-                vel mattis. Phasellus venenatis sem est, mattis tristique metus
-                aliquet non. Etiam congue velit odio, sed aliquet tellus blandit
-                vitae. In vulputate sem a leo aliquet, eget commodo dolor
-                maximus. Phasellus eu ullamcorper felis, ac dictum turpis.
-                Aenean rutrum ut odio eu condimentum. Vivamus varius magna
-                dignissim, accumsan ex ac, luctus lacus. Curabitur lacus justo,
-                accumsan eget lectus nec, convallis scelerisque felis. Nunc ut
-                lorem maximus, venenatis erat vitae, lacinia nibh. Nullam
-                bibendum egestas imperdiet. Nam arcu magna, fermentum vitae
-                pellentesque vel, facilisis et sapien. Donec sem ex, pretium
-                quis urna quis, fringilla bibendum ipsum. Pellentesque volutpat
-                neque sed libero scelerisque, eu convallis mauris ultrices.
-                Integer a efficitur lacus, nec aliquam enim. Nam dapibus leo
-                ante, quis consectetur justo placerat consequat. Nulla volutpat
-                quam vitae metus ultricies interdum. Vestibulum ante ipsum
-                primis in faucibus orci luctus et ultrices posuere cubilia
-                curae; Integer nec tortor sed velit dignissim rhoncus.
-                Pellentesque ac hendrerit ligula. Ut vestibulum ipsum sit amet
-                egestas blandit. Suspendisse justo odio, dapibus in venenatis
-                eu, sollicitudin dictum justo. Sed dictum non justo aliquet
-                ornare. Pellentesque non tristique risus. Donec malesuada mattis
-                ante nec dictum. Duis accumsan lorem vel odio mattis
-                pellentesque. Nam lacinia urna vitae lacus mattis eleifend. Duis
-                vestibulum lacinia metus at aliquam. Pellentesque habitant morbi
-                tristique senectus et netus et malesuada fames ac turpis
-                egestas. Donec varius felis nec arcu dignissim tempus. Maecenas
-                sagittis accumsan iaculis. Aliquam accumsan gravida efficitur.
-                Morbi laoreet blandit tincidunt. Cras in augue in lorem maximus
-                volutpat. Donec blandit leo a vehicula luctus. Maecenas
-                tincidunt, nisl vel blandit vestibulum, arcu sem accumsan leo,
-                vulputate posuere felis neque id sem. Mauris lacinia est sit
-                amet est elementum, id placerat lectus tincidunt. Morbi id mi
-                mattis, convallis felis quis, mattis mauris. Ut ex diam, pretium
-                tempus urna ut, auctor malesuada erat. Nulla a ante at purus
-                porta bibendum. Sed tortor elit, aliquam sed orci vitae,
-                elementum commodo ligula. In ut tincidunt diam. Suspendisse
-                volutpat est non ex faucibus, non luctus ipsum feugiat. Fusce a
-                libero augue. Mauris sed metus vitae lacus bibendum tincidunt.
-            </p>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle
+                        >General conditions of sale</ion-card-subtitle
+                    >
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-text style="color: white"
+                        >Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Sed ullamcorper scelerisque consectetur. Donec nec
+                        imperdiet lacus, ac sagittis turpis. Aliquam erat
+                        volutpat. Proin sagittis massa vel massa fermentum, non
+                        posuere nulla euismod. Aliquam egestas ipsum non nunc
+                        consectetur feugiat. Aenean hendrerit facilisis
+                        sollicitudin. Pellentesque pharetra lorem sed tellus
+                        dapibus vulputate. Nullam sed odio at orci bibendum
+                        accumsan. In hac habitasse platea dictumst. Suspendisse
+                        suscipit vestibulum posuere. Interdum et malesuada fames
+                        ac ante ipsum primis in faucibus. Aliquam ultrices, sem
+                        non mattis efficitur, nunc lacus venenatis felis, a
+                        egestas quam nisi non libero. Vestibulum leo ante,
+                        bibendum sed pulvinar eu, tincidunt sit amet eros. Cras
+                        rutrum facilisis odio, quis ornare massa efficitur sit
+                        amet. Vestibulum scelerisque molestie quam id bibendum.
+                        Phasellus ac dictum velit. Duis ac justo eu quam
+                        bibendum molestie. Interdum et malesuada fames ac ante
+                        ipsum primis in faucibus. Nulla ullamcorper mi vel
+                        volutpat hendrerit. Cras maximus nibh id ex lobortis
+                        mollis. Suspendisse id suscipit elit. Interdum et
+                        malesuada fames ac ante ipsum primis in faucibus. Duis
+                        vitae nisi vel ex lacinia dignissim ac eget odio. Class
+                        aptent taciti sociosqu ad litora torquent per conubia
+                        nostra, per inceptos himenaeos. Nulla non auctor odio.
+                        Nullam congue, ex non ultricies luctus, lorem mi
+                        ultricies augue, id mattis leo magna ac justo.
+                        Pellentesque at metus quis libero ornare iaculis.
+                        Curabitur venenatis volutpat leo ut cursus. Donec in
+                        risus quis odio vehicula tempus in vel massa. Nam non
+                        tristique ante. Pellentesque sed tortor ac turpis cursus
+                        porta eget in dolor. Nunc eget erat sit amet augue
+                        accumsan accumsan eu non ante. Donec dolor orci, lacinia
+                        sed tortor vitae, vestibulum pulvinar tortor. Curabitur
+                        cursus velit sodales justo ultrices, at condimentum orci
+                        finibus. Donec vitae dapibus est. Morbi lacus est,
+                        efficitur a est eget, condimentum pharetra ante. Donec
+                        venenatis in ante eu malesuada. Duis mollis porta libero
+                        id consequat. Fusce a lacus vitae dui accumsan placerat
+                        in nec augue. Nullam aliquet sapien et odio vulputate
+                        finibus. Morbi placerat sem consequat dolor consectetur,
+                        nec porttitor enim mattis. Suspendisse eleifend neque
+                        pellentesque massa sagittis, et pretium magna accumsan.
+                        Donec ac luctus neque. Phasellus dapibus vulputate odio.
+                        Donec efficitur mollis lobortis. Aliquam et neque id
+                        purus eleifend varius nec in enim. Morbi rutrum tellus
+                        neque, sed tempor neque pharetra a. Duis nec mi ex.
+                        Fusce tristique varius diam, nec vehicula sem
+                        scelerisque vel. Donec sit amet quam lectus. Nulla quis
+                        erat quam. Maecenas sit amet pulvinar eros, eget
+                        malesuada ex. Donec lorem sapien, pharetra sit amet
+                        vehicula eu, mattis ut lorem. Nunc vel tortor porta,
+                        vehicula tortor ac, varius odio. Sed arcu diam, blandit
+                        a viverra eu, faucibus nec elit. Phasellus mattis ipsum
+                        in pretium eleifend. Curabitur eget nibh porttitor,
+                        pharetra dolor a, viverra urna. Ut rutrum lorem et diam
+                        fringilla, vel semper eros porta. Proin id ligula vel
+                        nulla auctor elementum id in tortor. In in laoreet
+                        metus. Pellentesque tempus ut libero ac pharetra. Proin
+                        consequat ultrices laoreet.</ion-text
+                    >
+                </ion-card-content>
+            </ion-card>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue";
+import {
+    IonPage,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardContent,
+    IonText,
+} from "@ionic/vue";
 
 export default {
-    components: { IonPage, IonContent },
+    components: {
+        IonPage,
+        IonContent,
+        IonCard,
+        IonCardHeader,
+        IonCardSubtitle,
+        IonCardContent,
+        IonText,
+    },
 };
 </script>

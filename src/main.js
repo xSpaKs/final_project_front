@@ -39,6 +39,11 @@ import "./theme/variables.css";
 
 const pinia = createPinia();
 
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || "Ionic App";
+    next();
+});
+
 const app = createApp(App)
     .use(IonicVue)
     .use(router)

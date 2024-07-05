@@ -1,72 +1,99 @@
 <template>
     <ion-page>
         <ion-content>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                eget ante sit amet odio facilisis porta congue et magna. Integer
-                facilisis purus tortor, tempus elementum nunc malesuada id. Cras
-                rutrum turpis augue, lobortis scelerisque purus finibus a.
-                Aenean id lacinia orci, eu ornare risus. Pellentesque habitant
-                morbi tristique senectus et netus et malesuada fames ac turpis
-                egestas. Vivamus odio leo, aliquam ac leo sit amet, lacinia
-                tincidunt arcu. Nulla tempor massa at orci condimentum, eget
-                egestas est consequat. Nullam nec ultricies tellus. Suspendisse
-                potenti. Fusce fringilla tortor vitae luctus fringilla. Etiam
-                congue odio quis quam faucibus accumsan id in ante. Etiam at
-                luctus arcu. Ut dapibus magna eu lectus fermentum, et cursus
-                eros lobortis. Nam auctor auctor lorem, quis congue leo aliquet
-                id. Aenean aliquam non tellus ut condimentum. Aliquam lacus
-                elit, consectetur nec tellus ut, tempor pharetra est. Integer ut
-                ipsum sapien. Duis iaculis luctus vulputate. Pellentesque
-                convallis et ligula ac tempus. Sed venenatis lectus sed eleifend
-                condimentum. Curabitur ullamcorper, arcu sagittis consectetur
-                egestas, orci nisi finibus massa, non ultricies urna massa
-                consectetur neque. Vestibulum ante ipsum primis in faucibus orci
-                luctus et ultrices posuere cubilia curae; Morbi convallis non ex
-                vel bibendum. Nunc varius aliquet nibh, vel elementum lectus
-                sagittis a. Nam interdum, urna eu sodales aliquet, ligula elit
-                sollicitudin velit, vel ultricies sapien tellus et lorem. Nam
-                dolor felis, blandit nec elit non, rhoncus blandit justo. Donec
-                ut commodo nibh. Fusce placerat varius est non facilisis. Fusce
-                tempor purus nulla, id placerat lectus commodo in. Suspendisse
-                at viverra leo, sit amet rutrum odio. Proin posuere blandit
-                nunc, nec condimentum mauris posuere sit amet. Aliquam ut
-                dapibus leo. Proin id lorem dui. Duis interdum sodales leo, sed
-                mattis dui accumsan non. Aliquam quis nulla sit amet ante porta
-                vehicula. Praesent eu nisi lectus. Cras dapibus sem a gravida
-                tempor. Duis vulputate libero et dictum pulvinar. In sit amet
-                urna viverra, mollis metus id, convallis magna. Morbi sit amet
-                tortor lectus. In blandit tincidunt ipsum, eget molestie lacus
-                mattis et. Donec malesuada accumsan mauris, et fringilla diam
-                lobortis at. Integer vitae consequat neque. Curabitur non tempor
-                lacus. Vestibulum malesuada, eros eu interdum rhoncus, sapien
-                lacus venenatis eros, vitae sagittis quam mauris vel dolor.
-                Suspendisse lacus nisi, luctus vel commodo non, malesuada non
-                purus. Maecenas facilisis, dolor eu placerat pulvinar, tortor
-                lorem imperdiet felis, nec aliquam leo magna et mauris. Integer
-                semper lorem sed ante accumsan imperdiet. Maecenas nisl nisi,
-                varius in tristique ut, elementum molestie purus. Nulla lobortis
-                interdum tempor. Nam tristique lacus vel tellus porta tincidunt.
-                Fusce vehicula libero nunc, a scelerisque arcu ultricies ut.
-                Vestibulum vitae eros id lacus auctor pellentesque. In hac
-                habitasse platea dictumst. Sed malesuada vitae sem ut tincidunt.
-                Quisque sollicitudin vitae augue sit amet suscipit. Quisque
-                molestie cursus libero, sed accumsan odio. Nullam ac purus quis
-                justo aliquam pellentesque fermentum nec dui. Nulla dignissim
-                aliquet iaculis. Vestibulum mattis, justo et placerat sagittis,
-                tellus ante imperdiet ante, id facilisis lectus nisi a magna.
-                Etiam non est ante. Phasellus sed dui nec tellus convallis porta
-                eget eget velit. In vitae posuere risus, a volutpat lacus. Donec
-                sed orci eu nisl dapibus dapibus. Aliquam erat volutpat.
-            </p>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle>Privacy policy</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-text style="color: white"
+                        >Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Sed ullamcorper scelerisque consectetur. Donec nec
+                        imperdiet lacus, ac sagittis turpis. Aliquam erat
+                        volutpat. Proin sagittis massa vel massa fermentum, non
+                        posuere nulla euismod. Aliquam egestas ipsum non nunc
+                        consectetur feugiat. Aenean hendrerit facilisis
+                        sollicitudin. Pellentesque pharetra lorem sed tellus
+                        dapibus vulputate. Nullam sed odio at orci bibendum
+                        accumsan. In hac habitasse platea dictumst. Suspendisse
+                        suscipit vestibulum posuere. Interdum et malesuada fames
+                        ac ante ipsum primis in faucibus. Aliquam ultrices, sem
+                        non mattis efficitur, nunc lacus venenatis felis, a
+                        egestas quam nisi non libero. Vestibulum leo ante,
+                        bibendum sed pulvinar eu, tincidunt sit amet eros. Cras
+                        rutrum facilisis odio, quis ornare massa efficitur sit
+                        amet. Vestibulum scelerisque molestie quam id bibendum.
+                        Phasellus ac dictum velit. Duis ac justo eu quam
+                        bibendum molestie. Interdum et malesuada fames ac ante
+                        ipsum primis in faucibus. Nulla ullamcorper mi vel
+                        volutpat hendrerit. Cras maximus nibh id ex lobortis
+                        mollis. Suspendisse id suscipit elit. Interdum et
+                        malesuada fames ac ante ipsum primis in faucibus. Duis
+                        vitae nisi vel ex lacinia dignissim ac eget odio. Class
+                        aptent taciti sociosqu ad litora torquent per conubia
+                        nostra, per inceptos himenaeos. Nulla non auctor odio.
+                        Nullam congue, ex non ultricies luctus, lorem mi
+                        ultricies augue, id mattis leo magna ac justo.
+                        Pellentesque at metus quis libero ornare iaculis.
+                        Curabitur venenatis volutpat leo ut cursus. Donec in
+                        risus quis odio vehicula tempus in vel massa. Nam non
+                        tristique ante. Pellentesque sed tortor ac turpis cursus
+                        porta eget in dolor. Nunc eget erat sit amet augue
+                        accumsan accumsan eu non ante. Donec dolor orci, lacinia
+                        sed tortor vitae, vestibulum pulvinar tortor. Curabitur
+                        cursus velit sodales justo ultrices, at condimentum orci
+                        finibus. Donec vitae dapibus est. Morbi lacus est,
+                        efficitur a est eget, condimentum pharetra ante. Donec
+                        venenatis in ante eu malesuada. Duis mollis porta libero
+                        id consequat. Fusce a lacus vitae dui accumsan placerat
+                        in nec augue. Nullam aliquet sapien et odio vulputate
+                        finibus. Morbi placerat sem consequat dolor consectetur,
+                        nec porttitor enim mattis. Suspendisse eleifend neque
+                        pellentesque massa sagittis, et pretium magna accumsan.
+                        Donec ac luctus neque. Phasellus dapibus vulputate odio.
+                        Donec efficitur mollis lobortis. Aliquam et neque id
+                        purus eleifend varius nec in enim. Morbi rutrum tellus
+                        neque, sed tempor neque pharetra a. Duis nec mi ex.
+                        Fusce tristique varius diam, nec vehicula sem
+                        scelerisque vel. Donec sit amet quam lectus. Nulla quis
+                        erat quam. Maecenas sit amet pulvinar eros, eget
+                        malesuada ex. Donec lorem sapien, pharetra sit amet
+                        vehicula eu, mattis ut lorem. Nunc vel tortor porta,
+                        vehicula tortor ac, varius odio. Sed arcu diam, blandit
+                        a viverra eu, faucibus nec elit. Phasellus mattis ipsum
+                        in pretium eleifend. Curabitur eget nibh porttitor,
+                        pharetra dolor a, viverra urna. Ut rutrum lorem et diam
+                        fringilla, vel semper eros porta. Proin id ligula vel
+                        nulla auctor elementum id in tortor. In in laoreet
+                        metus. Pellentesque tempus ut libero ac pharetra. Proin
+                        consequat ultrices laoreet.</ion-text
+                    >
+                </ion-card-content>
+            </ion-card>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue";
+import {
+    IonPage,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardContent,
+    IonText,
+} from "@ionic/vue";
 
 export default {
-    components: { IonPage, IonContent },
+    components: {
+        IonPage,
+        IonContent,
+        IonCard,
+        IonCardHeader,
+        IonCardSubtitle,
+        IonCardContent,
+        IonText,
+    },
 };
 </script>
