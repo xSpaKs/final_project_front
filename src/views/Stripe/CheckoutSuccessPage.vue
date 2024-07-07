@@ -41,6 +41,7 @@ import {
 
 export default {
     mounted() {
+        // After 5 seconds, redirect to user page
         setTimeout(() => {
             this.$router.push("/user");
         }, 5000);

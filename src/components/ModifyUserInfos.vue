@@ -78,7 +78,7 @@ export default {
 
     methods: {
         async submit() {
-            this.v$.formData.$touch();
+            this.v$.formData.$touch(); // Vuelidate checks form inputs
 
             if (this.v$.formData.$invalid) {
                 console.log("Form is invalid");
@@ -86,6 +86,7 @@ export default {
             }
 
             try {
+                // HTTP request to modify the user informations in the database
                 const response = await axios.post(
                     "http://127.0.0.1:8001/api/modify-user",
                     {
@@ -101,7 +102,7 @@ export default {
                     }
                 );
 
-                // Store the updated user with localStorage
+                // Store the updated user in pinia & localStorage
                 this.authStore.update(response.data);
             } catch (error) {
                 console.log(error);
@@ -109,6 +110,7 @@ export default {
         },
     },
 
+    // Validations rules for Vuelidate
     validations: {
         formData: {
             name: {},

@@ -148,6 +148,7 @@ export default {
     methods: {
         logout() {
             try {
+                // HTTP request to delete user's authentification token in database
                 const response = axios.post(
                     "http://127.0.0.1:8001/api/logout",
                     {},
@@ -158,7 +159,7 @@ export default {
                     }
                 );
 
-                this.authStore.logout();
+                this.authStore.logout(); // Delete user from Pinia & localStorage
                 this.$router.push("/");
             } catch (error) {
                 console.log(error);

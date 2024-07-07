@@ -95,6 +95,7 @@ export default {
 
     async mounted() {
         try {
+            // HTTP request to get all subscriptions available
             const response = await axios.get(
                 "http://127.0.0.1:8001/api/stripe/subscriptions",
                 {}

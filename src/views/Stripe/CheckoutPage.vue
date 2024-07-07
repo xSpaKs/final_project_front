@@ -138,6 +138,7 @@ export default {
         };
     },
 
+    // If user is not logged in, redirect to login page
     beforeRouteEnter(to, from, next) {
         if (!JSON.parse(localStorage.getItem("user"))) {
             next("/login");
@@ -152,6 +153,7 @@ export default {
     },
 
     methods: {
+        // Return current date
         currentDate() {
             const date = new Date();
             const day = date.getDate().toString().padStart(2, "0");
@@ -161,6 +163,7 @@ export default {
             return `${day}/${month}/${year}`;
         },
 
+        // Return the date in 1 month or 1 year, based on user's choice
         futureDate() {
             const date = new Date();
             const day = date.getDate().toString().padStart(2, "0");
@@ -181,6 +184,7 @@ export default {
             return `${day}/${month}/${year}`;
         },
 
+        // Check URL's type validity
         loadType() {
             if (
                 this.$route.query.type != "month" &&
@@ -194,6 +198,7 @@ export default {
 
         async loadProduct() {
             try {
+                // HTTP request to get the subscription infos, based on URL parameter
                 const response = await axios.get(
                     "http://127.0.0.1:8001/api/stripe/subscriptions/" +
                         this.$route.query.product,
@@ -202,7 +207,7 @@ export default {
 
                 this.product = response.data;
             } catch (error) {
-                console.log(error);
+                this.$router.push("/subscriptions");
             }
 
             this.loaded = true;
@@ -210,6 +215,7 @@ export default {
 
         async submit() {
             try {
+                // HTTP request to get the URL of a Stripe Session
                 const response = await axios.post(
                     "http://127.0.0.1:8001/api/stripe/checkout",
                     {
@@ -226,6 +232,7 @@ export default {
                     }
                 );
 
+                // Redirect to Stripe's URL
                 const stripeCheckoutUrl = response.data.url;
                 window.location.replace(stripeCheckoutUrl);
             } catch (error) {

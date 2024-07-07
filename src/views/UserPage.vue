@@ -25,6 +25,7 @@ import UserSubscriptions from "../components/UserSubscriptions.vue";
 import DeleteAccount from "../components/DeleteAccount.vue";
 
 export default {
+    // If user is not logged in, redirect to login page
     beforeRouteEnter(to, from, next) {
         if (!JSON.parse(localStorage.getItem("user"))) {
             next("/login");

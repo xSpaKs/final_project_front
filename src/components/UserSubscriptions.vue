@@ -53,6 +53,7 @@ export default {
 
     async mounted() {
         try {
+            // HTTP request to get the payments from the current user
             const response = await axios.post(
                 "http://127.0.0.1:8001/api/payments-from-user",
                 {},
@@ -73,6 +74,7 @@ export default {
     methods: {
         async stripe_portal() {
             try {
+                // HTTP request to get a link for Stripe Billing Portal
                 const response = await axios.post(
                     "http://127.0.0.1:8001/api/stripe/customer",
                     {},
@@ -85,8 +87,7 @@ export default {
                     }
                 );
 
-                console.log(response.data);
-
+                // Redirect to the fetched link
                 const stripeCheckoutUrl = response.data.url;
                 window.location.replace(stripeCheckoutUrl);
             } catch (error) {

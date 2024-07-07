@@ -39,9 +39,12 @@ export default {
         };
     },
     async mounted() {
-        let response;
         try {
-            response = await axios.get("http://127.0.0.1:8001/api/news", {});
+            // HTTP request to get all the news
+            const response = await axios.get(
+                "http://127.0.0.1:8001/api/news",
+                {}
+            );
             this.news = response.data;
         } catch (error) {
             console.log(error);
@@ -50,7 +53,7 @@ export default {
 
     methods: {
         details(id) {
-            this.$router.push("/news/" + id);
+            this.$router.push("/news/" + id); // Redirect to a news page when clicking on it
         },
     },
 
