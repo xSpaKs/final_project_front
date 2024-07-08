@@ -59,8 +59,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .link {
     text-decoration: underline;
+}
+
+ion-card {
+    margin: auto;
+    max-width: 900px;
+    min-height: 100vh;
 }
 </style>

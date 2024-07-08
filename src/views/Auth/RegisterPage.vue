@@ -52,7 +52,7 @@
                     <ion-text class="ion-text-center">
                         You already have an account ?
                     </ion-text>
-                    <ion-text color="primary" router-link="/Login"
+                    <ion-text class="link" color="primary" router-link="/Login"
                         >Login</ion-text
                     >
                 </ion-card-content>
@@ -90,9 +90,9 @@ export default {
         return {
             authStore: useAuthStore(),
             formData: {
-                name: "Aran Hiblot",
-                email: "aran@gmail.com",
-                password: "aaaaaaaa",
+                name: "",
+                email: "",
+                password: "",
             },
             userExists: false,
         };
@@ -169,5 +169,8 @@ export default {
 <style scoped>
 span {
     color: red;
+}
+.link {
+    cursor: pointer;
 }
 </style>

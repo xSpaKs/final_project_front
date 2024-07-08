@@ -44,7 +44,10 @@
                     <ion-text class="ion-text-center">
                         You do not have an account ?
                     </ion-text>
-                    <ion-text color="primary" router-link="/register"
+                    <ion-text
+                        class="link"
+                        color="primary"
+                        router-link="/register"
                         >Register</ion-text
                     >
                 </ion-card-content>
@@ -162,5 +165,11 @@ export default {
 <style scoped>
 span {
     color: red;
+}
+</style>
+
+<style scoped>
+.link {
+    cursor: pointer;
 }
 </style>

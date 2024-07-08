@@ -33,38 +33,40 @@
                     ></ion-skeleton-text>
                 </div>
             </ion-card>
-            <ion-card v-if="loaded" v-for="subscription in subscriptions">
-                <img
-                    alt="Image of the product"
-                    :src="subscription.image"
-                    class="card-image"
-                />
-                <ion-card-header>
-                    <ion-card-title>{{ subscription.name }}</ion-card-title>
-                    <ion-card-subtitle
-                        >Yearly or monthly subscriptions</ion-card-subtitle
+            <div class="grid">
+                <ion-card v-if="loaded" v-for="subscription in subscriptions">
+                    <img
+                        alt="Image of the product"
+                        :src="subscription.image"
+                        class="card-image"
+                    />
+                    <ion-card-header>
+                        <ion-card-title>{{ subscription.name }}</ion-card-title>
+                        <ion-card-subtitle
+                            >Yearly or monthly subscriptions</ion-card-subtitle
+                        >
+                    </ion-card-header>
+                    <ion-card-content class="no-scroll"> </ion-card-content>
+                    <ion-button
+                        fill="clear"
+                        :router-link="{
+                            path: '/checkout',
+                            query: { product: subscription.id, type: 'year' },
+                        }"
+                        >{{ subscription.price1.amount }}€ /
+                        {{ subscription.price1.interval }}</ion-button
                     >
-                </ion-card-header>
-                <ion-card-content class="no-scroll"> </ion-card-content>
-                <ion-button
-                    fill="clear"
-                    :router-link="{
-                        path: '/checkout',
-                        query: { product: subscription.id, type: 'year' },
-                    }"
-                    >{{ subscription.price1.amount }}€ /
-                    {{ subscription.price1.interval }}</ion-button
-                >
-                <ion-button
-                    fill="clear"
-                    :router-link="{
-                        path: '/checkout',
-                        query: { product: subscription.id, type: 'month' },
-                    }"
-                    >{{ subscription.price2.amount }}€ /
-                    {{ subscription.price2.interval }}</ion-button
-                >
-            </ion-card>
+                    <ion-button
+                        fill="clear"
+                        :router-link="{
+                            path: '/checkout',
+                            query: { product: subscription.id, type: 'month' },
+                        }"
+                        >{{ subscription.price2.amount }}€ /
+                        {{ subscription.price2.interval }}</ion-button
+                    >
+                </ion-card>
+            </div>
         </ion-content>
     </ion-page>
 </template>
@@ -127,6 +129,19 @@ export default {
 .card-image {
     width: 100%;
     border-radius: 3px;
-    max-width: 400px;
+}
+
+@media (min-width: 700px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 </style>

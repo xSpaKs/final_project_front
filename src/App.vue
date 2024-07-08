@@ -2,13 +2,20 @@
     <ion-app>
         <ion-header>
             <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-menu-button
-                        autoHide="false"
-                        menu="main-menu"
-                    ></ion-menu-button>
-                </ion-buttons>
+                <ion-menu-button
+                    slot="start"
+                    autoHide="false"
+                    menu="main-menu"
+                />
+
                 <ion-title router-link="/">Planetary</ion-title>
+                <ion-button
+                    v-if="!authStore.isAuthenticated"
+                    router-link="/login"
+                    slot="end"
+                    fill="clear"
+                    >Login</ion-button
+                >
             </ion-toolbar>
         </ion-header>
         <ion-menu content-id="main-content" menu-id="main-menu">
@@ -129,6 +136,7 @@ import {
     IonRippleEffect,
     IonTitle,
     IonMenuButton,
+    IonButton,
 } from "@ionic/vue";
 
 import axios from "axios";
@@ -182,6 +190,7 @@ export default {
         IonRippleEffect,
         IonTitle,
         IonMenuButton,
+        IonButton,
     },
 };
 </script>
