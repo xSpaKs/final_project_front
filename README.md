@@ -1,67 +1,44 @@
+# Planetary - Application de Gestion de Contenu
 
-# Planetary
+## Description
+Planetary est une application web moderne développée avec Vue.js + Vite.js + Ionic et intégrant le système de paiement Stripe. Elle permet aux utilisateurs de louer des planètes et de gérer leurs profils personnels. L'application offre une interface utilisateur fluide et réactive, facilitant la navigation et l'interaction avec les fonctionnalités proposées.
 
-Planetary is an application that offers subscriptions to solar system's planets.
+## Fonctionnalités
 
+- Authentification utilisateur : Les utilisateurs peuvent se connecter, s'inscrire et gérer leurs profils personnels.
+- Gestion des abonnements : Accès à la location de diverses planètes payantes via des abonnements gérés par Stripe.
+- Navigation Intuitive : Menu latéral pour une navigation facile entre les différentes sections de l'application.
+- Interface Réactive : Conçue pour une utilisation optimale sur divers appareils, y compris les mobiles et les tablettes.
 
-## Run Locally
+## Prérequis
 
-### Front-end :
+- Node.js (version 14 ou supérieure)
+- Vite.js
+- Ionic
+- Compte Stripe pour la gestion des paiements
 
-Clone the project
+## Installation
 
-```bash
-  git clone https://github.com/xSpaKs/final_project_front
-```
+### Cloner le dépôt :
 
-Go to the project directory
+- git clone https://github.com/xSpaKs/final_project_front
 
-```bash
-  cd my-project
-```
+### Accéder au répertoire du projet :
 
-Install dependencies
+- cd planetary
 
-```bash
-  npm install
-```
+### Installer les dépendances :
 
-Start the server
+- npm install
 
-```bash
-  npm run dev
-```
+### Configurer les variables d'environnement :
 
-### Back-end :
+- Créez un fichier .env à la racine du projet et ajoutez l'URL de l'API :
+    - API_URL="http://127.0.0.1:8001/api/"
+    - Remplacez your_stripe_public_key par votre clé publique Stripe.
 
-Clone the project
+### Démarrer l'application :
 
-```bash
-  git clone https://github.com/xSpaKs/final_project_api
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  composer install
-```
-
-Start the server
-
-```bash
-  php artisan serve 
-```
-
-
-## Tech Stack
-
-**Client:** Ionic, Vue 3, Vite, Pinia
-
-**Server:** Laravel 11
+- npm run dev
+- L'application sera accessible à l'adresse http://localhost:3000.
 
