@@ -1,7 +1,8 @@
 # Planetary - Application de Gestion de Contenu
 
 ## Description
-Planetary est une application web moderne développée avec Vue.js + Vite.js + Ionic et intégrant le système de paiement Stripe. Elle permet aux utilisateurs de louer des planètes et de gérer leurs profils personnels. L'application offre une interface utilisateur fluide et réactive, facilitant la navigation et l'interaction avec les fonctionnalités proposées.
+Planetary est une PWA (Progressive Web App) développée avec Vue.js + Vite.js + Ionic et intégrant le système de paiement Stripe. Elle est reliée à une API Laravel, disponible sur mon repository https://github.com/xSpaKs/final_project_api 
+Elle permet aux utilisateurs de louer des planètes et de gérer leurs profils personnels. L'application offre une interface utilisateur fluide et réactive, facilitant la navigation et l'interaction avec les fonctionnalités proposées.
 
 ## Fonctionnalités
 
